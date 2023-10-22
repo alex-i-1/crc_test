@@ -1,0 +1,6 @@
+﻿
+There is no license.
+This is a sample project.
+Use any part of it you want.
+(But if you'll copy-paste some part of this code and present it to yout teacher as your solution, you'll more likely get a poor evaluation mark :) )
+

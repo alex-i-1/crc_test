@@ -1,0 +1,9 @@
+﻿	2023-09-28 - 2023-10-21
+	by Alexander Ilyin
+
+
+
+CRC is somehow left unexplained in Internet.
+There maybe is a good explanation somewhere, but as of this moment there are like 1 of 10 sources giving a small chunk of information about the algorithm, and you have to read/listen through a lot of text to get that small piece of information.
+Means a practical tests are necessary.
+

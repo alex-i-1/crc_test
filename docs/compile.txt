@@ -1,0 +1,16 @@
+﻿
+That isn't vital, but for a newer MSVC you may want to enable a switch so that the templates would be compiled more appropriately: "/Zc:__cplusplus".
+Configuration Properties -> C/C++ > Command Line property page -> Additional options
+This option requres Visual Studio 2017 version 15.7.
+
+MSVC 2008, beginning from version 05 of this project, actually doesn't cope with this code anymore :)
+It yet can compile, but with warnings. Sometimes with errors (need to rebuild the solution then, or delete "crc_test.bsc" file and then link). Those templates unroll to something big.
+
+Tested also on Code::Blocks 13320 with MinGW64 GCC 13.1.0 compiler.
+
+It will not work on MSVC 6.0 or 2002.
+Compiles and works on MSVC 2003, MSVC 2005 Express, MSVC 2015.
+
+MSVCs 2003 and 2005 compile it even without a warning, but for 2008 and 2015 you may want to either turn off "Enable Browse Information", or exclude some of template-based CRCs: when them are only one, no warning is being thrown.
+The other option would be to break "crc_table_gen.h" onto parts. But that file is already small, and do something because of a weakness of a compiler isn't rational.
+

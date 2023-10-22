@@ -1,0 +1,4 @@
+﻿
+03 - the last one which supports MSVC 6.0.
+Further versions will not support it, because I need a C++ templates to generate a CRC tables.
+

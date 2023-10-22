@@ -1,0 +1,43 @@
+﻿
+The component of this project were wtitten in this order:
+1) "crc_by_1_bit.cpp" - bit-by-bit implementation.
+2) "crc64_plain.cpp" - 8-bit tabled plain processing. The table is created with a recursing function.
+3) "crc_template.h" - a template for any CRC. 8-bit tables are used.
+4) Later "2" was reviewed, and became "crc64_plain_2.cpp".
+5) Later "3" was updated to "crc_table_gen_2.h". (Not done yet.)
+*The templates are of C++03. A newer C++ possibly is giving a better ability to write them.
+
+
+
+A mathematical notice of low importance about the templates.
+A table of 8 bits in each case.
+
+The table itself.
+1) A plain table, where one new value is added at every inclusion.
+That means:
+256 recursive levels.
+256 templates + 1 stub.
+32896 values are stored in those templates in total.
+(The number of values is "\sum_{n=1}^{256} n", which may be counted as 128 in average (this might be represented as: (0+256)/2, (1+255)/2, ...) multiplied by 257 positions.)
+2) A table represented as a binary tree.
+8 levels of depth, where every level contains all 256 values (this table is best to elaborate this way). 1 level of value containers (also all 256 values).
+256 ^ 2 - 1 = 511 templates.
+256 x 8 + 256 x 1 = 2304 values are stored in those templates in total.
+
+Generator of a single value.
+1) A bit-by-bit recursive generator for one value.
+8 levels.
+8 templates + 1 stub.
+0 values stored. 4 x 8 = 32 constexpr values are counted.
+2) A value generator which also stores a binary tree of values.
+Well, it wouldn't be easy try to create, if possible at all: an intermediate values need to be stored.
+But I yet will try to represent a theoretical math.
+3 levels of storage + 1 level the generator itself.
+1 + 4 + 8 = 11 templates, + 16 generators.
+16 x 3 = 48 values stored.
+2023-10-20: while thinking of this unreal idea of a storing generator of a single value, got a real idea: generate values while storing, this way combining the gen and the store; but that will be written in the next generation in "crc_table_gen_2.h".
+
+Combined store and generator.
+"crc_table_gen_2.h"
+*Not implementing it yet.
+
